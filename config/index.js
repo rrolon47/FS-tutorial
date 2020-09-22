@@ -22,14 +22,16 @@ export default {
     "sewing pattern"
   ],
   optionGroups: {
-    fit: ["size"]
+    fit: ["neckRatio", "widthRatio", "lengthRatio"]
   },
-  measurements: [],
+  measurements: ["headCircumference"],
   dependencies: {},
   inject: {},
   hide: [],
-  parts: ["box"],
+  parts: ["bib"],
   options: {
-    size: { pct: 50, min: 10, max: 100 }
+    neckRatio: { pct: 80, min: 70, max: 90 }, 
+    widthRatio: { pct: 45, min: 35, max: 55 }, 
+    lengthRatio: { pct: 50, min: 40, max: 65 }, 
   }
 };
