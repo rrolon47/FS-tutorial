@@ -4,6 +4,7 @@ export default function(part) {//main structure for building patterns always a f
   let { Point, points, Path, paths, measurements, options } = part.shorthand();
   
 // Design pattern here
+  // First we set points, then build the path
 
 // initial curve. 1/4th of circumference
      // adding named points. points holds all the points in our 'part"
@@ -11,8 +12,8 @@ export default function(part) {//main structure for building patterns always a f
   points.right = new Point(measurements.headCircumference / 10, 0); 
   points.bottom = new Point(0, measurements.headCircumference / 12);
 
-    //adding controll points 
-    //Cp - controll point, how we controll the curve of a line
+    //adding control points 
+    //Cp - control point, how we control the curve of a line, created as a Bezier Curve
     //.shift(degree, distance) creates new point shifted to new location along an angle
     //thispoint.dy(point passed) returns the distance between this point and the point passed along the y-axis(not at an angle)
     //.dx() returns the distance between two points along the x-axis(not at an angle)
@@ -29,8 +30,8 @@ export default function(part) {//main structure for building patterns always a f
   paths.neck = new Path()
     .move(points.right)
     .curve(points.rightCp1, points.bottomCp2, points.bottom);
-    //move from right point towards righCP to bottomCP then finish at point bottom
-
+  
+    //move from right point towards righCP to bottomCP then finish at point bottom--working counterclockwise
 
 //   let tweak = 1;
 //   let target = (measurements.headCircumference * options.neckRatio) /4;
@@ -89,7 +90,7 @@ export default function(part) {//main structure for building patterns always a f
 //     .line(points.topLeft)
 //     .close();
 
-//     //create curved strapps
+//     //create curved straps
 //     points.edgeLeft = new Point(points.topLeft.x, points.left.y);
 // points.edgeRight = new Point(points.topRight.x, points.right.y);
 // points.edgeTop = new Point(0, points.topLeft.y);
